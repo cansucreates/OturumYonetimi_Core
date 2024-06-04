@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using OturumYonetimi_Core.Models;
 
 namespace OturumYonetimi_Core.Controllers
 {
+    [Authorize]
     public class KullanicilarsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -19,6 +21,7 @@ namespace OturumYonetimi_Core.Controllers
             _context = context;
         }
 
+        [AllowAnonymous]
         // GET: Kullanicilars
         public async Task<IActionResult> Index()
         {
