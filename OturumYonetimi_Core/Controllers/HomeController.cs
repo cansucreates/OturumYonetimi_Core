@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using OturumYonetimi_Core.Data;
 using OturumYonetimi_Core.Models;
@@ -56,6 +57,15 @@ namespace OturumYonetimi_Core.Controllers
             }
             return View();
         }
+
+        // Çıkış işlemi
+        public IActionResult Cikis()
+        {
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Giris", "Home");
+        }
+
+
 
         public IActionResult Index()
         {
